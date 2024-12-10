@@ -206,8 +206,10 @@ function removeLastOccurrences(str, value) {
  */
 function sumOfCodes(str) {
   let result = 0;
-  for (let i = 0; i <= str.length; i += 1) {
-    result += str.charCodeAt(i);
+  if (typeof str === 'string') {
+    for (let i = 0; i < str.length; i += 1) {
+      result += str.charCodeAt(i);
+    }
   }
   return result;
 }
@@ -223,8 +225,9 @@ function sumOfCodes(str) {
  *   startsWith('Hello World', 'World') => false
  *   startsWith('Hello World', 'Hello') => true
  */
-function startsWith(/* str, substr */) {
-  throw new Error('Not implemented');
+function startsWith(str, substr) {
+  const result = str.startsWith(substr);
+  return result;
 }
 
 /**
@@ -238,8 +241,9 @@ function startsWith(/* str, substr */) {
  *   endsWith('Hello World', 'World') => true
  *   endsWith('Hello World', 'Hello') => false
  */
-function endsWith(/* str, substr */) {
-  throw new Error('Not implemented');
+function endsWith(str, substr) {
+  const result = str.endsWith(substr);
+  return result;
 }
 
 /**
@@ -269,8 +273,9 @@ function formatTime(/* minutes, seconds */) {
  *   reverseString('abcdef') => 'fedcba'
  *   reverseString('12345') => '54321'
  */
-function reverseString(/* str */) {
-  throw new Error('Not implemented');
+function reverseString(str) {
+  const result = str.split('').reverse().join('');
+  return result;
 }
 
 /**
@@ -284,8 +289,9 @@ function reverseString(/* str */) {
  *   orderAlphabetically('textbook') => 'bekoottx'
  *   orderAlphabetically('abc123xyz') => '123abcxyz'
  */
-function orderAlphabetically(/* str */) {
-  throw new Error('Not implemented');
+function orderAlphabetically(str) {
+  const result = str.split('').sort().join('');
+  return result;
 }
 
 /**
@@ -300,8 +306,9 @@ function orderAlphabetically(/* str */) {
  *   containsSubstring('JavaScript is Fun', 'Python') => false
  *   containsSubstring('12345', '34') => true
  */
-function containsSubstring(/* str, substring */) {
-  throw new Error('Not implemented');
+function containsSubstring(str, substring) {
+  const result = str.includes(substring);
+  return result;
 }
 
 /**
@@ -318,8 +325,28 @@ function containsSubstring(/* str, substring */) {
  *   countVowels('aEiOu') => 5
  *   countVowels('XYZ') => 1
  */
-function countVowels(/* str */) {
-  throw new Error('Not implemented');
+function countVowels(str) {
+  let result = 0;
+  const arrayStr = str.split('');
+  for (let i = 0; i < str.length; i += 1) {
+    if (
+      arrayStr[i] === 'a' ||
+      arrayStr[i] === 'e' ||
+      arrayStr[i] === 'i' ||
+      arrayStr[i] === 'o' ||
+      arrayStr[i] === 'u' ||
+      arrayStr[i] === 'y' ||
+      arrayStr[i] === 'A' ||
+      arrayStr[i] === 'E' ||
+      arrayStr[i] === 'I' ||
+      arrayStr[i] === 'O' ||
+      arrayStr[i] === 'U' ||
+      arrayStr[i] === 'Y'
+    ) {
+      result += 1;
+    }
+  }
+  return result;
 }
 
 /**
