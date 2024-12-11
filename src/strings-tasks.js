@@ -42,17 +42,16 @@ function getStringLength(value) {
  *   isString('test') => true
  *   isString(new String('test')) => true
  */
-function isString(/* value */) {
-  throw new Error('Not implemented');
-  // let val = value;
-  // let result = false;
-  // if (typeof val === 'object') {
-  //   val = String(val);
-  // }
-  // if (typeof val === 'string') {
-  //   result = true;
-  // }
-  // return result;
+function isString(value) {
+  let val = value;
+  let result = false;
+  if (typeof val === 'object' && val !== null) {
+    val = val.valueOf();
+  }
+  if (typeof val === 'string') {
+    result = true;
+  }
+  return result;
 }
 
 /**
@@ -364,8 +363,7 @@ function countVowels(str) {
  */
 function isPalindrome(str) {
   let result = false;
-  const strWithoutSigns = str.replace(/[^\w\s]|_/g, '');
-  const strWithoutWhitespaceAndSigns = strWithoutSigns.replace(/\s+/g, '');
+  const strWithoutWhitespaceAndSigns = str.replace(/\W|_/g, '');
   const strReverse = strWithoutWhitespaceAndSigns.split('').reverse().join('');
   if (strWithoutWhitespaceAndSigns.toLowerCase() === strReverse.toLowerCase()) {
     result = true;
@@ -488,8 +486,9 @@ function extractNameFromTemplate(value) {
  *   unbracketTag('<span>') => 'span'
  *   unbracketTag('<a>') => 'a'
  */
-function unbracketTag(/* str */) {
-  throw new Error('Not implemented');
+function unbracketTag(str) {
+  const result = str.slice(1, -1);
+  return result;
 }
 
 /**
